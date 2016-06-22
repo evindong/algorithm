@@ -1,11 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type BitField []byte
 
 func NewBitField(len int) BitField {
-	return BitField(make([]byte, len/8+1))
+	n := int(math.Ceil(float64(len) / 8.0))
+	return BitField(make([]byte, n))
+}
+
+func (b BitField) Len() int {
+	return len(b) * 8
 }
 
 func (b BitField) Clear(n int) {
@@ -25,13 +33,13 @@ func (b BitField) Test(n int) bool {
 }
 
 func main() {
-	arr := []int{23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
-	bs := NewBitField(23)
+	arr := []int{23, 22, 21, 20, 17, 18, 19, 16, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 26, 29}
+	bs := NewBitField(len(arr))
 	for i := 0; i < len(arr); i++ {
 		bs.Set(arr[i])
 	}
 
-	for i := 0; i < 24; i++ {
+	for i := 0; i < bs.Len(); i++ {
 		if bs.Test(i) {
 			fmt.Print(i, " ")
 		}
