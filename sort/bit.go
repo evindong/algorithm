@@ -18,7 +18,7 @@ func (b *bitSet) Set(n int) {
 	b.b[start] |= 1 << uint(offset)
 }
 
-func (b *bitSet) test(n int) bool {
+func (b *bitSet) Test(n int) bool {
 	start, offset := n/8, n%8
 	return (b.b[start] & (1 << uint(offset))) != 0
 }
@@ -31,7 +31,7 @@ func main() {
 	}
 
 	for i := 0; i < 24; i++ {
-		if bs.test(i) {
+		if bs.Test(i) {
 			fmt.Print(i, " ")
 		}
 	}
