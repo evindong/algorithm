@@ -19,7 +19,7 @@ func (b BitField) Test(n int) bool {
 }
 
 func main() {
-	arr := []int{23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	arr := []int{23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
 	bs := NewBitField(23)
 	for i := 0; i < len(arr); i++ {
 		bs.Set(arr[i])
