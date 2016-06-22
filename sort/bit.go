@@ -8,6 +8,12 @@ func NewBitField(len int) BitField {
 	return BitField(make([]byte, len/8+1))
 }
 
+func (b BitField) Clear(n int) {
+	start, offset := n/8, n%8
+	b[start] &= ^(1 << uint(offset))
+
+}
+
 func (b BitField) Set(n int) {
 	start, offset := n/8, n%8
 	b[start] |= 1 << uint(offset)
