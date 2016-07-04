@@ -39,9 +39,6 @@ func getMid(arr []int, start, end int) int {
 			arr[j] = temp
 		}
 	}
-	if i < j {
-
-	}
 	arr[start] = arr[i]
 	arr[i] = sign
 
