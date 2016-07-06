@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	arr := []int{5,4,3,2,1,5}
+	arr := []int{5, 4, 3, 2, 1, 5}
 	quickSort(arr, 0, len(arr)-1)
 	for _, item := range arr {
 		fmt.Print(item, " ")
@@ -14,10 +14,10 @@ func main() {
 
 func quickSort(arr []int, start, end int) {
 	mid := getMid(arr, start, end)
-	if mid-start > 1 {
-		quickSort(arr, start, mid)
+	if mid > start {
+		quickSort(arr, start, mid-1)
 	}
-	if end-(mid+1) > 1 {
+	if end > mid {
 		quickSort(arr, mid+1, end)
 	}
 }
