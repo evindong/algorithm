@@ -44,3 +44,28 @@ func getMid(arr []int, start, end int) int {
 
 	return i
 }
+
+func getMid1(arr []int, start, end int) int {
+	guard, i, j := arr[start], start, end
+	for {
+		for arr[i] < guard {
+			i++
+		}
+		for arr[j] > guard {
+			j--
+		}
+
+		if i >= j {
+			break
+		}
+
+		if arr[i] != arr[j] {
+			temp := arr[i]
+			arr[i] = arr[j]
+			arr[j] = temp
+		} else {
+			i++
+		}
+	}
+	return i
+}
